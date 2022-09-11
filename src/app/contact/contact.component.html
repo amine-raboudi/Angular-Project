@@ -1,0 +1,91 @@
+<h2 style="text-transform: uppercase;text-align: center;color: rgb(146, 88, 138);margin-bottom: 20px;
+text-shadow: 1px 1px 2px  0 0 25px rgb(52, 65, 63), 0 0 5px rgb(236, 245, 242);">TO: Mohamedamineraboudi@gmail.com</h2>
+
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+
+  <div class="form-group">
+
+    <input #Company="ngModel" required type="text" class="form-control" id="company" name="Company"
+      placeholder="Your Company" style="margin-top: 20px;margin-bottom: 20px;" ngModel>
+    <div *ngIf="Company.touched && Company.invalid" class="alert alert-danger">
+      Company is required!
+    </div>
+  </div>
+
+
+  <div class="form-group">
+
+    <input #Name="ngModel" required type="text" class="form-control" ngModel id="name" name="Name"
+      placeholder="Your Name" style="margin-top: 20px;margin-bottom: 20px;">
+    <div *ngIf="Name.touched && Name.invalid" class="alert alert-danger">
+      Name is required!
+    </div>
+  </div>
+  <div class="form-group">
+
+    <input #Email="ngModel" required type="email" class="form-control" email ngModel id="mail" name="Email"
+      placeholder="Your Email" style="margin-top: 20px;margin-bottom: 20px;">
+    <div *ngIf="Email.touched && Email.invalid" class="alert alert-danger">
+      Email is invalid!
+
+    </div>
+
+  </div>
+  
+  <div class="form-group">
+
+    <input #Telephone="ngModel" required  class="form-control" ngModel id="tel" name="Telephone " type="number"
+      placeholder="Your Telephone Number" style="margin-top: 20px;margin-bottom: 50px;width: 400px;"  ng2TelInput [ng2TelInputOptions]="{initialCountry: 'tn'}">
+    <div *ngIf="Telephone.touched && Telephone.invalid" class="alert alert-danger">
+      Telephone Number is required!
+    </div>
+  </div>
+  <div class="container">
+    <label class="form-check-label" for="inlineCheckbox1" style="margin-bottom: 20px;"><b>Choice of material to
+        counterpart :</b></label><br>
+    <div class="form-check form-check-inline" style="margin-left: 50px;">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" ngModel name="radar">
+      <label class="form-check-label" for="inlineCheckbox1">RADAR</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" ngModel name="WLAN">
+      <label class="form-check-label" for="inlineCheckbox2">WLAN</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" ngModel name="BLUETOOTH">
+      <label class="form-check-label" for="inlineCheckbox3">BLUETOOTH</label>
+    </div>
+    <div class="form-check form-check-inline" style="margin-left: 50px;">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" ngModel name="ZIGBEE">
+      <label class="form-check-label" for="inlineCheckbox1">RFID</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" ngModel name="RFID">
+      <label class="form-check-label" for="inlineCheckbox2">GSM</label>
+    </div>
+    <button (click)="toggleShow()" style="margin-left: 50px;color: aliceblue;margin-bottom: 20px;" type="button"
+      class="btn btn-primary" >Other</button>
+
+    <div *ngIf="isShown" class="row container-fluid" id="divshow">
+      <input class="form-control  "  placeholder="Other material"type="text" id="inlineCheckbox2" value="option2" ngModel name="RFID">
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-6">
+      <button mat-button (click)="closeModel()" style="margin-left: 70px;margin-top: 20px;" type="button"
+        class="btn btn-secondary">Cancel</button>
+
+    </div>
+
+    <div class="col-sm-6">
+      <button [disabled]="userForm.invalid" style="margin-right:10px ;margin-top: 20px;margin-left: 50px" type="submit"
+        class="btn btn-success"> Send
+      </button>
+
+    </div>
+  </div>
+</form>
